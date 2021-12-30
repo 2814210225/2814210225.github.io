@@ -73,6 +73,11 @@
             margin: 5px;
             float: left;
         }
+         .input {
+            color: white;
+            position:absolute;
+            left:-9999px;
+        }
 
 
     </style>
@@ -94,15 +99,33 @@
         $("#startTime").html(val2);
         $("#endTime").html(val3);
     });
+
+    let image = '';
+
+    function selectImage(file) {
+        if (!file.files || !file.files[0]) {
+            return;
+        }
+        let reader = new FileReader();
+        reader.onload = function (evt) {
+            document.getElementById('image').src = evt.target.result;
+            image = evt.target.result;
+        };
+        reader.readAsDataURL(file.files[0]);
+    }
 </script>
 
 
 <body>
-<div class="text0">
-    <span>申请出入</span>
 
+<div id="div1">
+    <img id="image" src="">
 </div>
 
+<label id="realBtn" class="text0">
+    <input type="file" id="fileInput1" name="file" class="input" onchange="selectImage(this)">
+    <span>申请出入</span>
+</label>
 
 <div class="text1">
     <br>
@@ -184,9 +207,6 @@
     </div>
 </div>
 
-<div id="div1">
-    <img src="./image/1.png" alt="image"/>
-</div>
 
 </body>
 </html>
