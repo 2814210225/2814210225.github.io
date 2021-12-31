@@ -73,10 +73,11 @@
             margin: 5px;
             float: left;
         }
-         .input {
+
+        .input {
             color: white;
-            position:absolute;
-            left:-9999px;
+            position: absolute;
+            left: -9999px;
         }
 
 
@@ -93,11 +94,7 @@
 
     $(function () {
         var val1 = getParam("userName");
-        var val2 = getParam("startTime");
-        var val3 = getParam("endTime");
         $("#userName").html(val1);
-        $("#startTime").html(val2);
-        $("#endTime").html(val3);
     });
 
     let image = '';
@@ -113,6 +110,32 @@
         };
         reader.readAsDataURL(file.files[0]);
     }
+
+    setInterval(function () {
+        let date = new Date();
+        let year = date.getFullYear();
+
+        let m = date.getMonth() + 1;
+        let month;
+        if (m < 10)
+            month = "0" + m;
+        else {
+            month = m;
+        }
+
+        let d = date.getDate();
+        let day;
+        if (d < 10)
+            day = "0" + d;
+        else {
+            day = d;
+        }
+
+        let d1 = document.getElementById('Date1');
+        d1.innerHTML = year + '/' + month + '/' + day + '&nbsp;' + '08:00:00';
+        let d2 = document.getElementById('Date2');
+        d2.innerHTML = year + '/' + month + '/' + day + '&nbsp;' + '22:30:00';
+    }, 1000)
 </script>
 
 
@@ -197,10 +220,10 @@
         <span>学生</span>
     </div>
     <div class="underline">
-        <span id="startTime"></span>
+        <span id="Date1"></span>
     </div>
     <div class="underline">
-        <span id="endTime"></span>
+        <span id="Date2"></span>
     </div>
     <div class="underline">
         <span>已通过</span>
