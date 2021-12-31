@@ -29,6 +29,7 @@
             color: #444444;
             margin: 5px;
         }
+
     </style>
 </head>
 
@@ -38,12 +39,6 @@
     <div>
         <p>请输入姓名</p>
         <input type="text" id="userName" value="张三" placeholder="请输入姓名">
-        <br>
-        <p>请输入申请时间</p>
-        <input type="text" id="startTime" value="2021/12/31 08:00:00" placeholder="请输入申请时间">
-        <br>
-        <p>请输入结束时间</p>
-        <input type="text" id="endTime" value="2021/12/31 22:30:00" placeholder="请输入结束时间">
         <br>
         <br>
 
@@ -55,10 +50,8 @@
     $(function () {
         $('#send').click(function() {
             var value1 = $('#userName').val();
-            var value2 = $('#startTime').val();
-            var value3 = $('#endTime').val();
             var url = "/index2.html?userName="
-             + value1 + "&startTime=" + value2 + "&endTime=" + value3;
+             + value1;
             url=encodeURI(url);
             window.location.href=url;
         });
